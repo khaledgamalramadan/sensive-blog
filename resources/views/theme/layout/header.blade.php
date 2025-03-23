@@ -1,3 +1,7 @@
+    @php
+        $HeaderCategories = App\Models\Category::get();
+    @endphp
+
     <!--================Header Menu Area =================-->
     <header class="header_area">
         <div class="main_menu">
@@ -22,23 +26,23 @@
                                 <a href="{{ route('theme.category') }}" class="nav-link dropdown-toggle"
                                     data-toggle="dropdown" role="button" aria-haspopup="true"
                                     aria-expanded="false">Categories</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link"
-                                            href="{{ route('theme.category') }}">Food</a></li>
-                                    <li class="nav-item"><a class="nav-link"
-                                            href="{{ route('theme.category') }}">Bussiness</a></li>
-                                    <li class="nav-item"><a class="nav-link"
-                                            href="{{ route('theme.category') }}">Travel</a></li>
-                                </ul>
+
+                                @if (count($HeaderCategories) > 0)
+                                    <ul class="dropdown-menu">
+                                        @foreach ($HeaderCategories as $category)
+                                            <li class="nav-item"><a class="nav-link"
+                                                    href="{{ route('theme.category') }}">{{ $category->name }}</a></li>
+                                        @endforeach
+                                    </ul>
+                                @endif
                             </li>
+
                             <li class="nav-item @yield('contact-active')"><a class="nav-link"
                                     href="{{ route('theme.contact') }}">Contact</a></li>
                         </ul>
-
                         <!-- Add new blog -->
                         <a href="#" class="btn btn-sm btn-primary mr-2">Add New</a>
                         <!-- End - Add new blog -->
-
                         <ul class="nav navbar-nav navbar-right navbar-social">
                             @guest
                                 <a href="{{ route('register') }}" class="btn btn-sm btn-warning">Register / Login</a>
@@ -58,13 +62,9 @@
                                                 Logout
                                             </a>
                                         </li>
-
                                     </ul>
                                 </li>
                             @endguest
-
-
-
                         </ul>
                     </div>
                 </div>
