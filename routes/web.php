@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\ThemeController;
@@ -28,6 +29,10 @@ Route::controller(ThemeController::class)->name('theme.')->group(function () {
 
 //Subscriber Routes
 Route::post('/subscribe/store', [SubscriberController::class,'store'])->name('subscribe.store');
+
+
+//Contact Routes
+Route::post('/contact/store', [ContactController::class,'store'])->name('contact.store');
 
 
 
