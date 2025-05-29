@@ -34,9 +34,9 @@
             <ul class="cat-list mt-20">
                 @foreach ($Categories as $Category )
                 <li>
-                    <a href="#" class="d-flex justify-content-between">
+                    <a href="{{ route('theme.category',['id' => $Category->id]) }}" class="d-flex justify-content-between">
                         <p>{{ $Category->name }}</p>
-                        <p>(03)</p>
+                        <p>{{ count($Category->blogs) }}</p>
                     </a>
                 </li>
                 @endforeach

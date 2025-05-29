@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreContactRequest extends FormRequest
+class StoreCommentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +23,10 @@ class StoreContactRequest extends FormRequest
     {
         return [
             'name'    => 'required|string',
-            'email'   => 'required|email|',
+            'email'   => 'required|email', // إزالة الـ | الزائدة
             'subject' => 'required',
-            'message' => 'required',
-            'blog_id' => 'required|exists:blogs,id', // Assuming 'blogs' is the table name and 'id' is the primary key
+            'message' => 'required', // أضيفت لأنها حقل مطلوب في النموذج
+            'blog_id' => 'required|exists:blogs,id',
         ];
     }
 }
